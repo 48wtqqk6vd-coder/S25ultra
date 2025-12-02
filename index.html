@@ -461,7 +461,7 @@
             <div class="video-wrapper">
                 <iframe 
                     id="rickroll-video"
-                    src=""
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&controls=1&loop=1&playlist=dQw4w9WgXcQ&enablejsapi=1"
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -500,19 +500,17 @@
             rickrolled = true;
 
             const overlay = document.getElementById('rickroll-overlay');
-            const video = document.getElementById('rickroll-video');
+            const videoFrame = document.getElementById('rickroll-video');
 
             // Show overlay
             overlay.classList.add('active');
 
-            // Trick: Start MUTED (autoplay works), then unmute after 500ms
-            video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&loop=1&playlist=dQw4w9WgXcQ&enablejsapi=1";
-
-            // Unmute after video starts
+            // Das Video ist schon geladen (muted), jetzt unmuten und abspielen
+            // Warte kurz damit Overlay sichtbar ist
             setTimeout(() => {
-                // Reload with sound
-                video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&controls=1&loop=1&playlist=dQw4w9WgXcQ";
-            }, 800);
+                // Reload iframe mit autoplay UND unmuted
+                videoFrame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&controls=1&loop=1&playlist=dQw4w9WgXcQ";
+            }, 100);
 
             console.log('🎵 RICKROLLED!');
 
