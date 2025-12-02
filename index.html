@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy S25 Ultra - Vorbestellen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Samsung Sharp Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            padding: 20px 50px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 50px;
+            background: linear-gradient(180deg, #0f3460 0%, #1a1a2e 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Specs Section */
+        .specs {
+            padding: 100px 50px;
+            background: #1a1a2e;
+        }
+
+        .specs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .spec-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .spec-item h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .spec-item p {
+            color: #ccc;
+            font-size: 1.1em;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 150px 50px;
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .final-cta p {
+            font-size: 1.5em;
+            color: #aaa;
+            margin-bottom: 50px;
+        }
+
+        .big-button {
+            padding: 25px 70px;
+            font-size: 1.5em;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .big-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Rickroll Overlay */
+        #rickroll-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        #rickroll-overlay.active {
+            display: flex;
+            animation: overlayFadeIn 0.5s ease-in;
+        }
+
+        @keyframes overlayFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .rickroll-container {
+            text-align: center;
+            max-width: 95%;
+        }
+
+        .rickroll-title {
+            font-size: 4em;
+            color: #ff0000;
+            margin-bottom: 30px;
+            animation: rainbow 2s linear infinite, bounce 1s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            16% { color: #ff7f00; }
+            33% { color: #ffff00; }
+            50% { color: #00ff00; }
+            66% { color: #0000ff; }
+            83% { color: #8b00ff; }
+            100% { color: #ff0000; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 16/9;
+            margin: 0 auto 30px;
+            border: 5px solid #ff0000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .rickroll-message {
+            font-size: 2em;
+            color: #fff;
+            margin-top: 20px;
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .close-hint {
+            position: absolute;
+            bottom: 30px;
+            color: #888;
+            font-size: 1.2em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .section-title { font-size: 2em; }
+            .specs-container { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">SAMSUNG</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#specs">Specs</a>
+            <a href="#order">Bestellen</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Galaxy S25 Ultra</h1>
+            <p>Die nächste Generation ist da</p>
+            <button class="cta-button" onclick="scrollToOrder()">Jetzt entdecken</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Revolutionäre Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3>200MP Kamera</h3>
+                <p>Unglaubliche Detailschärfe mit unserer bisher besten Kamera. Jedes Foto wird zum Meisterwerk.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Snapdragon 8 Gen 4</h3>
+                <p>Extreme Performance für Gaming, Multitasking und KI-Anwendungen der Zukunft.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔋</div>
+                <h3>5000mAh Akku</h3>
+                <p>Den ganzen Tag durchhalten ohne Kompromisse. Mit 65W Schnellladung.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🖊️</div>
+                <h3>S Pen Evolution</h3>
+                <p>Noch präziser, noch intelligenter. Deine Gedanken direkt auf dem Display.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>Galaxy AI Pro</h3>
+                <p>KI-gestützte Features die dein Leben einfacher machen. Jeden Tag.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>Dynamic AMOLED 3X</h3>
+                <p>6.9" Display mit 3200 x 1440 Pixel und 120Hz adaptive Bildwiederholrate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section class="specs" id="specs">
+        <h2 class="section-title">Technische Daten</h2>
+        <div class="specs-container">
+            <div class="spec-item">
+                <h4>Display</h4>
+                <p>6.9" Dynamic AMOLED 3X, 3200x1440, 120Hz</p>
+            </div>
+            <div class="spec-item">
+                <h4>Prozessor</h4>
+                <p>Qualcomm Snapdragon 8 Gen 4 (3nm)</p>
+            </div>
+            <div class="spec-item">
+                <h4>RAM & Speicher</h4>
+                <p>12GB RAM, 256GB/512GB/1TB</p>
+            </div>
+            <div class="spec-item">
+                <h4>Kamera</h4>
+                <p>200MP Hauptkamera, 50MP Ultraweitwinkel, 10MP Periskop</p>
+            </div>
+            <div class="spec-item">
+                <h4>Akku</h4>
+                <p>5000mAh, 65W Schnellladen, 15W Wireless</p>
+            </div>
+            <div class="spec-item">
+                <h4>Besonderheiten</h4>
+                <p>S Pen, IP68, Gorilla Glass Victus 3</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="order">
+        <h2>Bereit für die Zukunft?</h2>
+        <p>Sichere dir das Galaxy S25 Ultra jetzt zum Vorbesteller-Preis</p>
+        <button class="big-button" id="order-button">🎁 Jetzt vorbestellen</button>
+    </section>
+
+    <!-- Rickroll Overlay -->
+    <div id="rickroll-overlay">
+        <div class="rickroll-container">
+            <div class="rickroll-title">🎵 RICKROLLED! 🎵</div>
+            <div class="video-wrapper">
+                <iframe 
+                    id="rickroll-video"
+                    src=""
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="rickroll-message">
+                😈 Du wurdest gerickrollt! 😈<br>
+                <span style="font-size: 0.7em;">Never gonna give you up! 🎵</span>
+            </div>
+        </div>
+        <div class="close-hint">Viel Spaß beim Zuhören! 💃🕺</div>
+    </div>
+
+    <script>
+        let rickrolled = false;
+
+        // Scroll to order section
+        function scrollToOrder() {
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Order button triggers rickroll
+        document.getElementById('order-button').addEventListener('click', function() {
+            triggerRickroll();
+        });
+
+        // Auto rickroll after 30 seconds if not clicked
+        setTimeout(() => {
+            if (!rickrolled) {
+                triggerRickroll();
+            }
+        }, 30000);
+
+        function triggerRickroll() {
+            if (rickrolled) return;
+            rickrolled = true;
+
+            const overlay = document.getElementById('rickroll-overlay');
+            const video = document.getElementById('rickroll-video');
+
+            // Show overlay
+            overlay.classList.add('active');
+
+            // Load YouTube video with autoplay
+            video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&controls=1&loop=1&playlist=dQw4w9WgXcQ";
+
+            console.log('🎵 RICKROLLED!');
+
+            // Prevent escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    alert('🎵 Never gonna let you down! 🎵');
+                }
+            });
+
+            // Make it harder to close
+            window.addEventListener('beforeunload', function(e) {
+                e.preventDefault();
+                e.returnValue = '';
+            });
+
+            // Prevent back button
+            history.pushState(null, null, location.href);
+            window.onpopstate = function() {
+                history.go(1);
+                alert('🎵 Never gonna run around and desert you! 🎵');
+            };
+
+            // Change title
+            const titles = [
+                '🎵 RICKROLLED!',
+                '💃 Never Gonna Give You Up!',
+                '🎊 Got Rickrolled!',
+                '😈 You fell for it!'
+            ];
+            let i = 0;
+            setInterval(() => {
+                document.title = titles[i];
+                i = (i + 1) % titles.length;
+            }, 2000);
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
