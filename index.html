@@ -459,13 +459,7 @@
         <div class="rickroll-container">
             <div class="rickroll-title">🎵 RICKROLLED! 🎵</div>
             <div class="video-wrapper">
-                <iframe 
-                    id="rickroll-video"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&controls=1&loop=1&playlist=dQw4w9WgXcQ&enablejsapi=1"
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <div id="rickroll-video"></div>
             </div>
             <div class="rickroll-message">
                 😈 Du wurdest gerickrollt! 😈<br>
@@ -475,8 +469,30 @@
         <div class="close-hint">Viel Spaß beim Zuhören! 💃🕺</div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let rickrolled = false;
+        let player;
+
+        // YouTube API Ready
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('rickroll-video', {
+                videoId: 'dQw4w9WgXcQ',
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 1,
+                    'loop': 1,
+                    'playlist': 'dQw4w9WgXcQ'
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log('YouTube Player ready!');
+        }
 
         // Scroll to order section
         function scrollToOrder() {
@@ -500,17 +516,17 @@
             rickrolled = true;
 
             const overlay = document.getElementById('rickroll-overlay');
-            const videoFrame = document.getElementById('rickroll-video');
 
             // Show overlay
             overlay.classList.add('active');
 
-            // Das Video ist schon geladen (muted), jetzt unmuten und abspielen
-            // Warte kurz damit Overlay sichtbar ist
-            setTimeout(() => {
-                // Reload iframe mit autoplay UND unmuted
-                videoFrame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&controls=1&loop=1&playlist=dQw4w9WgXcQ";
-            }, 100);
+            // Use YouTube API to control playback
+            if (player && player.playVideo) {
+                player.unMute();
+                player.setVolume(80);
+                player.playVideo();
+                console.log('🎵 Playing with API!');
+            }
 
             console.log('🎵 RICKROLLED!');
 
